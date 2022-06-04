@@ -1,6 +1,6 @@
 import Tile from "./Tile"
 function Tiles({ hogs }) {
-  console.log(hogs)
+  // console.log(hogs)
   const displayTiles = hogs.map(hog => {
     return (
       <Tile

@@ -6,7 +6,7 @@ function HogFilter({ filteredHogs, greasedHogs, handleFilterChange }) {
           <select className="ui dropdown" value={filteredHogs} onChange={handleFilterChange}>
             <option value="All">All</option>
             <option name="name" value="Name">Name</option>
-            <option name="age" value="Age">Age</option>
+            <option name="weight" value="Weight">Weight</option>
           </select>
         </div>
         <br />

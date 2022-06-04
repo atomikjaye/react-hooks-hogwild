@@ -6,21 +6,16 @@ function Tile({ name, specialty, weight, highMedal, image, greased }) {
 
   function handleShowInfo() {
     setShowInfo(!showInfo ? true : false)
-    // if (!showInfo) {
-    // console.log(showInfo)
-    //   //   setShowInfo(!showInfo)
-    //   //   console.log(showInfo)
-    //   // }
   }
   function showInfoDisplay() {
     return (
       <>
         <div className="ui sub header">More Information</div>
         <div className="description left aligned">
-          <span><strong>✨Specialty:</strong> {specialty}</span><br />
-          <span><strong>🏋️Weight:</strong> {weight}</span><br />
-          <span><strong>🥇Highest Medal:</strong> {highMedal}</span><br />
-          <span><strong>🛢️Greased:</strong> {greased ? 'Yes' : 'No'}</span>
+          <span><strong>✨ Specialty:</strong> {specialty}</span><br />
+          <span><strong>🏋️ Weight:</strong> {weight}</span><br />
+          <span><strong>🥇 Highest Medal:</strong> {highMedal}</span><br />
+          <span><strong>🛢️ Greased:</strong> {greased ? 'Yes' : 'No'}</span>
         </div>
       </>
     )
