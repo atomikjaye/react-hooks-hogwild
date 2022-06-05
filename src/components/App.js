@@ -18,37 +18,51 @@ function App() {
       setFilteredHogs(e.target.value)
     }
   }
-
   // we want updated Array to sort by name
   // so we want to sort Arr based on
 
+  const hogsToDisplay = hogs
+    .filter((hog) => (greasedHogs) ? hog.greased : true)
+    .sort((currHog, prevHog) => {
+      if (filteredHogs === "Weight") {
+        return currHog.weight - prevHog.weight
+      } else if (filteredHogs === "Name") {
+        let nameA = currHog.name.toLowerCase()
+        let nameB = prevHog.name.toLowerCase()
 
-
-  function hogsToDisplay() {
-    let updatedArr = [...hogArr]
-    console.log("HOG ARR", hogArr)
-    console.log("HOUpdated ARR", hogArr)
-    console.log(filteredHogs)
-    if (filteredHogs === "All") {
-      updatedArr = hogArr.filter(hog => true)
-    } else if (filteredHogs === "Name") {
-      updatedArr = hogArr.sort((a, b) => {
-        let nameA = a.name.toLowerCase()
-        let nameB = b.name.toLowerCase()
         if (nameA < nameB) {
           return -1
-        }
-        if (nameA > nameB) {
+        } else if (nameA > nameB) {
           return 1
         }
         return 0
-      })
-    } else if (filteredHogs === "Weight") {
-      updatedArr = hogArr.sort((a, b) => a.weight - b.weight)
-    }
-    console.log("UPDATED ARR", updatedArr)
-  }
-  hogsToDisplay()
+      }
+    })
+
+  console.log(hogsToDisplay)
+  // function hogsToDisplay() {
+  //   let updatedArr = [...hogArr]
+  //   if (filteredHogs === "All") {
+  //     updatedArr = updatedArr.filter(hog => true)
+  //   } else if (filteredHogs === "Name") {
+  //     // I was having problems understanding why
+  //     // this was editing my original array
+  //     // turns out sort() overwrites the original array!!
+  //     updatedArr = updatedArr.sort((a, b) => {
+  //       let nameA = a.name.toLowerCase()
+  //       let nameB = b.name.toLowerCase()
+
+  //       if (nameA < nameB) {
+  //         return -1
+  //       } else if (nameA > nameB) {
+  //         return 1
+  //       }
+  //       return 0
+  //     })
+  //   } else if (filteredHogs === "Weight") {
+  //     updatedArr = updatedArr.sort((a, b) => a.weight - b.weight)
+  //   }
+  // }
 
   return (
     <div className="App">
@@ -60,7 +74,7 @@ function App() {
       // setgreasedHogs={setGreasedHogs}
       />
       <Tiles
-        hogs={hogArr}
+        hogs={hogsToDisplay}
         filteredHogs={filteredHogs}
         greasedHogs={greasedHogs}
       />

@@ -3,7 +3,9 @@ function HogFilter({ filteredHogs, greasedHogs, handleFilterChange }) {
     <div className="ui middle aligned center aligned grid form stacked">
       <div className="fields">
         <div className="field">
-          <select className="ui dropdown" value={filteredHogs} onChange={handleFilterChange}>
+          <select className="ui dropdown"
+            value={filteredHogs}
+            onChange={handleFilterChange}>
             <option value="All">All</option>
             <option name="name" value="Name">Name</option>
             <option name="weight" value="Weight">Weight</option>
@@ -12,7 +14,9 @@ function HogFilter({ filteredHogs, greasedHogs, handleFilterChange }) {
         <br />
         <div className="field">
           <div className="ui toggle checkbox">
-            <input type="checkbox" checked={greasedHogs} name="public" onChange={handleFilterChange} />
+            <input type="checkbox"
+              checked={greasedHogs} name="greased"
+              onChange={handleFilterChange} />
             <label>Show Greased Hogs</label>
           </div>
         </div>

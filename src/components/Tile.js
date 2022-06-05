@@ -1,4 +1,4 @@
-import hogs from "../porkers_data"
+// import hogs from "../porkers_data"
 import React, { useState } from "react"
 
 function Tile({ name, specialty, weight, highMedal, image, greased }) {
