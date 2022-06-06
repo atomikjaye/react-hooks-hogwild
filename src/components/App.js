@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import hogs from "../porkers_data";
 import Tiles from "./Tiles"
 import HogFilter from "./HogFilter"
+import AddHogForm from "./AddHogForm"
 
 function App() {
   // Filter Hogs based on form
@@ -18,10 +19,18 @@ function App() {
       setFilteredHogs(e.target.value)
     }
   }
+
+  function handleNewHog(newHog) {
+    console.log("IN APP.js", newHog)
+    setHogArr([...hogArr, newHog])
+    console.log("NEW HOG ARR", hogArr)
+    console.log("NEW HOG ARR", hogsToDisplay)
+    // console.log("NEW HOG ARR", hogArr)
+  }
   // we want updated Array to sort by name
   // so we want to sort Arr based on
 
-  const hogsToDisplay = hogs
+  const hogsToDisplay = hogArr
     .filter((hog) => (greasedHogs) ? hog.greased : true)
     .sort((currHog, prevHog) => {
       if (filteredHogs === "Weight") {
@@ -39,31 +48,6 @@ function App() {
       }
     })
 
-  console.log(hogsToDisplay)
-  // function hogsToDisplay() {
-  //   let updatedArr = [...hogArr]
-  //   if (filteredHogs === "All") {
-  //     updatedArr = updatedArr.filter(hog => true)
-  //   } else if (filteredHogs === "Name") {
-  //     // I was having problems understanding why
-  //     // this was editing my original array
-  //     // turns out sort() overwrites the original array!!
-  //     updatedArr = updatedArr.sort((a, b) => {
-  //       let nameA = a.name.toLowerCase()
-  //       let nameB = b.name.toLowerCase()
-
-  //       if (nameA < nameB) {
-  //         return -1
-  //       } else if (nameA > nameB) {
-  //         return 1
-  //       }
-  //       return 0
-  //     })
-  //   } else if (filteredHogs === "Weight") {
-  //     updatedArr = updatedArr.sort((a, b) => a.weight - b.weight)
-  //   }
-  // }
-
   return (
     <div className="App">
       <Nav />
@@ -71,8 +55,8 @@ function App() {
         filteredHogs={filteredHogs}
         handleFilterChange={handleFilterChange}
         greasedHogs={greasedHogs}
-      // setgreasedHogs={setGreasedHogs}
       />
+      <AddHogForm addNewHog={handleNewHog} />
       <Tiles
         hogs={hogsToDisplay}
         filteredHogs={filteredHogs}
